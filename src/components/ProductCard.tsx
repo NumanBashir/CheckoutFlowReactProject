@@ -3,24 +3,18 @@ import "./ProductCard.css";
 
 const ProductCard = () => {
   return (
-    <div>
-      <table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-      </table>
+    <div className="product-card">
+      <img src="src/assets/vitaminD.webp" className="product-image" />
+      <div className="product-info">
+        <h2 className="product-title">Produkt1</h2>
+        <div className="product-price">
+          <span className="single-price">395,00 kr</span>
+          <div className="quantity">
+            <input type="number" value="2" className="quantity-input" />
+            <span className="total-price">790,00 kr</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
