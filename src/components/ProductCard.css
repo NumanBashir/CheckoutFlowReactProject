@@ -1,0 +1,14 @@
+.cols {
+  float: left;
+  width: 50%;
+}
+
+.row {
+  font-size: 14px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

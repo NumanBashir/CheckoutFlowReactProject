@@ -6,6 +6,7 @@ function App() {
     <>
       <div>
         <h1 className="title-cart">Din Indkøbskurv</h1>
+
         <ProductCard />
       </div>
     </>
