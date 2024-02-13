@@ -4,16 +4,36 @@ import "./ProductCard.css";
 const ProductCard = () => {
   return (
     <>
-      <div className="container">
-        <img src="src/assets/vitaminD.webp" className="product-image" />
-        <div className="product-desc">
-          <h2>Produkt1</h2>
-          <span>200kr</span>
-        </div>
-        <div className="quantity">
-          <span>2</span>
-          <p>400kr</p>
-        </div>
+      <div className="table-container">
+        <table>
+          <tr>
+            <td>
+              <img
+                src="src/assets/vitaminD.webp"
+                className="product-image"
+                alt="Product"
+              />
+            </td>
+            <td className="td2">
+              <p>Produkt1</p>
+              <p>200kr</p>
+            </td>
+            <td>
+              <input type="number" className="quantity-input" min="0" />
+            </td>
+            <td>
+              <p>400kr</p>
+            </td>
+            <td>
+              <img
+                src="src/assets/trash-bin.png"
+                className="trash-image"
+                alt="Product"
+              />
+            </td>
+          </tr>
+        </table>
+        <hr className="product-line" />
       </div>
     </>
   );
