@@ -4,35 +4,27 @@ import "./ProductCard.css";
 const ProductCard = () => {
   return (
     <>
-      <div className="table-container">
-        <table>
-          <tr>
-            <td>
-              <img
-                src="src/assets/vitaminD.webp"
-                className="product-image"
-                alt="Product"
-              />
-            </td>
-            <td className="td2">
+      <div className="product-card-container">
+        <div className="product-row">
+          <div className="product-details">
+            <img
+              src="src/assets/vitaminD.webp"
+              className="product-image"
+              alt="Product"
+            />
+            <div>
               <p>Produkt1</p>
               <p>200kr</p>
-            </td>
-            <td>
-              <input type="number" className="quantity-input" min="0" />
-            </td>
-            <td>
-              <p>400kr</p>
-            </td>
-            <td>
-              <img
-                src="src/assets/trash-bin.png"
-                className="trash-image"
-                alt="Product"
-              />
-            </td>
-          </tr>
-        </table>
+            </div>
+          </div>
+          <div className="product-actions">
+            <input type="number" className="quantity-input" min="0" />
+            <p className="total-item-price">400kr</p>
+            <button className="delete-product">
+              <img src="src/assets/trash-bin.png" className="trash-image" />
+            </button>
+          </div>
+        </div>
         <hr className="product-line" />
       </div>
     </>
@@ -40,3 +32,5 @@ const ProductCard = () => {
 };
 
 export default ProductCard;
+
+// TODO: Change table view to flexbox maybe
