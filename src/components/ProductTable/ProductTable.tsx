@@ -11,7 +11,6 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
     <>
       <div className="table-container">
         <table>
-          <caption>Din Indkøbskurv</caption>
           <thead>
             <tr>
               <th>Title</th>
