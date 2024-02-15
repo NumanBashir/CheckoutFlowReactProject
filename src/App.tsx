@@ -1,16 +1,15 @@
 import "./App.css";
 import ProductCard from "./components/ProductCard";
 
-function App() {
+// App-komponenten, der indeholder CartHeader
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <h1 className="title-cart">Din Indkøbskurv</h1>
-
-        <ProductCard />
-      </div>
-    </>
+    <div className="App">
+      <h1 className="title-cart">Din Indkøbskurv</h1>
+      {/* Resten af din indkøbskurvs komponenter */}
+      <ProductCard />
+    </div>
   );
-}
+};
 
 export default App;

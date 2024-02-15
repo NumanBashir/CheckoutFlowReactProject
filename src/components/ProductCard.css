@@ -12,3 +12,31 @@
   display: table;
   clear: both;
 }
+/* Tilføjer bredde og styling til tabellen og dens headers */
+table {
+  width: 100%; /* Sørger for at tabellen fylder hele bredden */
+  table-layout: fixed; /* Fast kolonnebredde */
+}
+
+th {
+  text-align: left; /* Teksten i headers skal være venstrestillet */
+  padding: 8px; /* Tilføjer en lille polstring omkring teksten */
+}
+
+/* Hvis du vil have specifik bredde på hver kolonne, kan du bruge følgende CSS */
+th:nth-child(1) {
+  width: 40%; /* Produkt */
+}
+
+th:nth-child(2) {
+  width: 20%; /* Antal */
+}
+
+th:nth-child(3) {
+  width: 20%; /* Pris */
+}
+
+th:nth-child(4) {
+  width: 20%; /* Samlede Pris */
+}
+
