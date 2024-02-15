@@ -1,16 +1,31 @@
+import { useState, useEffect } from "react";
 import "./App.css";
-import ProductCard from "./components/ProductCard";
+import ProductTable from "./components/ProductTable/ProductTable";
+import vitaminerData from "./data/vitaminer.json";
+import { Product } from "./interfaces/interfaces";
 
-function App() {
+const App: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const displayedProducts = products.slice(0, 4); // Show only first 4 products
+
+  useEffect(() => {
+    setProducts(vitaminerData as Product[]);
+  }, []);
   return (
     <>
       <div>
         <h1 className="title-cart">Din Indkøbskurv</h1>
-
-        <ProductCard />
+        <ProductTable products={displayedProducts} />
       </div>
     </>
   );
-}
+};
 
 export default App;
+
+// TODO: Styling of table
+// TODO: Fix button img styling
+// TODO: Move products cart table into CartPage
+// TODO: When we use router or nav place inside of App.tsx
+// TODO: Create a currency/price formatter in utilities
+// TODO: Calculate total price in terms of quantities
