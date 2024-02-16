@@ -3,5 +3,30 @@
 }
 
 .my-row {
-  border-bottom: 5px solid black;
+  border-bottom: 1px solid #ccc; /* Linje under hver række */
+}
+
+.quantity-input {
+  width: 50px;
+  padding: 5px;
+}
+
+.delete-product {
+  background-color: transparent; /* Gennemsigtig baggrundsfarve */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.trash-image {
+  width: 20px;
+  height: 20px;
+  background-color: white; /* Hvid baggrundsfarve */
+  border-radius: 50%; /* Gør det rundt */
+}
+
+.my-row th,
+.my-row td {
+  padding: 30px; /* Tilføj 10px padding til overskrifts- og data-celler */
 }

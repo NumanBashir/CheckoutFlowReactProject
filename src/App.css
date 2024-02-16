@@ -1,5 +1,8 @@
 .title-cart {
   text-align: center;
+    border-bottom: 2px solid #ccc; /* Linje under overskriften */
+    padding-bottom: 10px; /* Lidt ekstra plads under linjen */
+    background-color: rgb(249, 234, 188); /* Baggrundsfarve */
 }
 
 .table-header {
