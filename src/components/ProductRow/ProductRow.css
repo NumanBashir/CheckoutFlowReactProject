@@ -1,32 +1,23 @@
-.trash-image {
-  width: 50px;
-}
-
 .my-row {
-  border-bottom: 1px solid #ccc; /* Linje under hver række */
+  border-bottom: 1px solid #000000;
 }
 
 .quantity-input {
-  width: 50px;
-  padding: 5px;
+  width: 30px;
+  height: 30px;
 }
 
 .delete-product {
-  background-color: transparent; /* Gennemsigtig baggrundsfarve */
-  color: white;
+  background-color: transparent;
   border: none;
-  padding: 5px 10px;
   cursor: pointer;
 }
 
 .trash-image {
-  width: 20px;
-  height: 20px;
-  background-color: white; /* Hvid baggrundsfarve */
-  border-radius: 50%; /* Gør det rundt */
+  width: 50px;
 }
 
 .my-row th,
 .my-row td {
-  padding: 30px; /* Tilføj 10px padding til overskrifts- og data-celler */
+  padding: 10px;
 }
