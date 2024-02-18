@@ -12,9 +12,3 @@
 .container {
   position: relative;
 }
-
-.button {
-  position: absolute;
-  right: 390px;
-  bottom: -100px;
-}
