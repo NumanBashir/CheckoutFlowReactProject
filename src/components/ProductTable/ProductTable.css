@@ -6,3 +6,9 @@
 .bold-text {
   font-weight: bold;
 }
+
+.subtotal-text {
+  text-align: right;
+  padding-right: 10px;
+  font-weight: bold;
+}

@@ -23,7 +23,11 @@ const App: React.FC = () => {
       <div className="container">
         <h1 className="title-cart">Din Indkøbskurv</h1>
         <ProductTable products={displayedProducts} />
-        <Button text="Gå til betaling" onClick={handleButtonClick} className="button" />
+        <Button
+          text="Gå til betaling"
+          onClick={handleButtonClick}
+          className="button"
+        />
       </div>
     </>
   );
