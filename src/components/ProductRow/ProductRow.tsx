@@ -8,7 +8,11 @@ interface ProductRowProps {
   onDeleteRow: (productId: string) => void;
 }
 
-const ProductRow: React.FC<ProductRowProps> = ({ product, onTotalChange, onDeleteRow }) => {
+const ProductRow: React.FC<ProductRowProps> = ({
+  product,
+  onTotalChange,
+  onDeleteRow,
+}) => {
   const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(product.price);
 
@@ -34,7 +38,6 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, onTotalChange, onDelet
           <img className="product-image" src={product.image} alt="" />
           <td>{product.name}</td>
         </div>
-
         <td>{product.price} DKK</td>
         <td>
           <input
@@ -47,8 +50,15 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, onTotalChange, onDelet
         </td>
         <td>{total} DKK</td>
         <td>
+          <input type="checkbox" className="gift-toggle" />
+        </td>
+        <td>
           <button className="delete-product" onClick={handleDeleteRow}>
-            <img src="src/assets/trash-bin.png" className="trash-image" alt="Delete" />
+            <img
+              src="src/assets/trash-bin.png"
+              className="trash-image"
+              alt="Delete"
+            />
           </button>
         </td>
       </tr>
