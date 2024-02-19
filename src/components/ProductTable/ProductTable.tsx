@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Product } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
@@ -8,10 +9,19 @@ interface ProductTableProps {
 }
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
-  const subtotal = products.reduce((acc, product) => acc + product.price, 0);
+  const [totals, setTotals] = useState<{ [key: string]: number }>({});
+
+  const handleTotalChange = (productId: string, newTotal: number) => {
+    setTotals((prevState) => ({
+      ...prevState,
+      [productId]: newTotal,
+    }));
+  };
+
+  const subtotal = Object.values(totals).reduce((acc, total) => acc + total, 0);
 
   function handleButtonClick(): void {
-    throw new Error("Function not implemented.");
+    console.log("Button clicked");
   }
 
   return (
@@ -20,30 +30,29 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
         <table>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
+              <th>Produkt</th>
+              <th>Pris</th>
+              <th>Antal</th>
+              <th>I Alt</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
-              <ProductRow key={product.id} product={product} />
+              <ProductRow
+                key={product.id}
+                product={product}
+                onTotalChange={handleTotalChange}
+              />
             ))}
-            <tr className="my-row">
-              <td colSpan={3} className="subtotal-text">
-                Subtotal
-              </td>
-              <td className="subtotal-amount">{subtotal.toFixed(2)} DKK</td>
-            </tr>
           </tbody>
         </table>
       </div>
-      <Button
-        text="Gå til betaling"
-        onClick={handleButtonClick}
-        className="button"
-      />
+      <div className="proceed-container">
+        <p>
+          <strong>Subtotal:</strong> {subtotal.toFixed(2)} DKK{" "}
+        </p>
+        <Button text="Gå til betaling" onClick={handleButtonClick} />
+      </div>
     </>
   );
 };
