@@ -1,4 +1,5 @@
-import React from "react";
+// ProductTable.tsx
+import React, { useState } from "react";
 import { Product } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
@@ -9,12 +10,16 @@ interface ProductTableProps {
 }
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
-  const subtotal = products.reduce((acc, product) => acc + product.price, 0);
+  const [totals, setTotals] = useState<{ [key: string]: number }>({});
 
-  const total = products.reduce((acc, product) => {
-    const productTotal = product.price * (product.quantity || 0);
-    return acc + productTotal;
-  }, 0);
+  const handleTotalChange = (productId: string, newTotal: number) => {
+    setTotals(prevState => ({
+      ...prevState,
+      [productId]: newTotal
+    }));
+  };
+
+  const subtotal = Object.values(totals).reduce((acc, total) => acc + total, 0);
 
   function handleButtonClick(): void {
     console.log("Button clicked");
@@ -34,7 +39,11 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <ProductRow key={product.id} product={product} />
+              <ProductRow
+                key={product.id}
+                product={product}
+                onTotalChange={handleTotalChange}
+              />
             ))}
           </tbody>
         </table>
