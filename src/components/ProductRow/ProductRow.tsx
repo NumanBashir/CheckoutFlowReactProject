@@ -19,7 +19,11 @@ const ProductRow: React.FC<ProductRowProps> = ({ product }) => {
   return (
     <>
       <tr className="my-row">
-        <td>{product.name}</td>
+        <div className="image-name">
+          <img className="product-image" src={product.image} alt="" />
+          <td>{product.name}</td>
+        </div>
+
         <td>{product.price} DKK</td>
         <td>
           <input

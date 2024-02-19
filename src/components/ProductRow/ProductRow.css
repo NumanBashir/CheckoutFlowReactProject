@@ -17,6 +17,16 @@
   width: 50px;
 }
 
+.product-image {
+  width: 50px;
+}
+
+.image-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .my-row th,
 .my-row td {
   padding: 10px;
