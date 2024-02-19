@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const displayedProducts = products.slice(0, 4); // Show only first 4 products
 
   useEffect(() => {
-    setProducts(vitaminerData as Product[]);
+    setProducts(vitaminerData as unknown as Product[]);
   }, []);
 
   return (
