@@ -12,9 +12,9 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const [totals, setTotals] = useState<{ [key: string]: number }>({});
 
   const handleTotalChange = (productId: string, newTotal: number) => {
-    setTotals(prevState => ({
+    setTotals((prevState) => ({
       ...prevState,
-      [productId]: newTotal
+      [productId]: newTotal,
     }));
   };
 
@@ -30,10 +30,10 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
         <table>
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
+              <th>Produkt</th>
+              <th>Pris</th>
+              <th>Antal</th>
+              <th>I Alt</th>
             </tr>
           </thead>
           <tbody>
