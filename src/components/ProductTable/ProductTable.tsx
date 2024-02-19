@@ -9,7 +9,8 @@ interface ProductTableProps {
 }
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
-  const [displayedProducts, setDisplayedProducts] = useState<Product[]>(products);
+  const [displayedProducts, setDisplayedProducts] =
+    useState<Product[]>(products);
   const [initialProducts, setInitialProducts] = useState<Product[]>(products);
   const [totals, setTotals] = useState<{ [key: string]: number }>({});
 
@@ -26,7 +27,9 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   };
 
   const handleDeleteRow = (productId: string) => {
-    const updatedProducts = displayedProducts.filter(product => product.id !== productId);
+    const updatedProducts = displayedProducts.filter(
+      (product) => product.id !== productId
+    );
     setDisplayedProducts(updatedProducts);
 
     setTotals((prevState) => {
@@ -62,9 +65,16 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
       </div>
       <div className="proceed-container">
         <p>
-          <strong>Subtotal:</strong> {Object.values(totals).reduce((acc, total) => acc + total, 0).toFixed(2)} DKK{" "}
+          <strong>Subtotal:</strong>{" "}
+          {Object.values(totals)
+            .reduce((acc, total) => acc + total, 0)
+            .toFixed(2)}{" "}
+          DKK{" "}
         </p>
-        <Button text="Gå til betaling" onClick={() => console.log("Button clicked")} />
+        <Button
+          text="Gå til betaling"
+          onClick={() => console.log("Button clicked")}
+        />
       </div>
     </>
   );

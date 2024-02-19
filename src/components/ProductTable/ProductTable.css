@@ -16,3 +16,7 @@
   flex-direction: column;
   justify-content: end;
 }
+
+thead {
+  font-size: 28px;
+}
