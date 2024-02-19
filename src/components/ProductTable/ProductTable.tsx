@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Product } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
@@ -9,7 +9,14 @@ interface ProductTableProps {
 }
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
+  const [displayedProducts, setDisplayedProducts] = useState<Product[]>(products);
+  const [initialProducts, setInitialProducts] = useState<Product[]>(products);
   const [totals, setTotals] = useState<{ [key: string]: number }>({});
+
+  useEffect(() => {
+    setDisplayedProducts(products);
+    setInitialProducts(products);
+  }, [products]);
 
   const handleTotalChange = (productId: string, newTotal: number) => {
     setTotals((prevState) => ({
@@ -18,11 +25,16 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
     }));
   };
 
-  const subtotal = Object.values(totals).reduce((acc, total) => acc + total, 0);
+  const handleDeleteRow = (productId: string) => {
+    const updatedProducts = displayedProducts.filter(product => product.id !== productId);
+    setDisplayedProducts(updatedProducts);
 
-  function handleButtonClick(): void {
-    console.log("Button clicked");
-  }
+    setTotals((prevState) => {
+      const updatedTotals = { ...prevState };
+      delete updatedTotals[productId];
+      return updatedTotals;
+    });
+  };
 
   return (
     <>
@@ -37,11 +49,12 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {displayedProducts.map((product) => (
               <ProductRow
                 key={product.id}
                 product={product}
                 onTotalChange={handleTotalChange}
+                onDeleteRow={handleDeleteRow}
               />
             ))}
           </tbody>
@@ -49,9 +62,9 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
       </div>
       <div className="proceed-container">
         <p>
-          <strong>Subtotal:</strong> {subtotal.toFixed(2)} DKK{" "}
+          <strong>Subtotal:</strong> {Object.values(totals).reduce((acc, total) => acc + total, 0).toFixed(2)} DKK{" "}
         </p>
-        <Button text="Gå til betaling" onClick={handleButtonClick} />
+        <Button text="Gå til betaling" onClick={() => console.log("Button clicked")} />
       </div>
     </>
   );
