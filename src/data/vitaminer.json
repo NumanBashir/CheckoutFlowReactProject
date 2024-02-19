@@ -16,7 +16,7 @@
     "currency": "DKK",
     "rebateQuantity": 2,
     "rebatePercent": 25,
-    "upsellProductId": null, 
+    "upsellProductId": "vitamin-c-depot-500-250",
     "image": "src/assets/c-vitamin.png"
   },
   {
