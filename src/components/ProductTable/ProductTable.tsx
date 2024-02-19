@@ -11,7 +11,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const subtotal = products.reduce((acc, product) => acc + product.price, 0);
 
   function handleButtonClick(): void {
-    throw new Error("Function not implemented.");
+    console.log("Button clicked");
   }
 
   return (
@@ -30,20 +30,15 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
             {products.map((product) => (
               <ProductRow key={product.id} product={product} />
             ))}
-            <tr className="my-row">
-              <td colSpan={3} className="subtotal-text">
-                Subtotal
-              </td>
-              <td className="subtotal-amount">{subtotal.toFixed(2)} DKK</td>
-            </tr>
           </tbody>
         </table>
       </div>
-      <Button
-        text="Gå til betaling"
-        onClick={handleButtonClick}
-        className="button"
-      />
+      <div className="proceed-container">
+        <p>
+          <strong>Subtotal:</strong> {subtotal.toFixed(2)} DKK{" "}
+        </p>
+        <Button text="Gå til betaling" onClick={handleButtonClick} />
+      </div>
     </>
   );
 };
