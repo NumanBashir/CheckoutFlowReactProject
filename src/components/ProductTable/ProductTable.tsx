@@ -1,4 +1,3 @@
-// ProductTable.tsx
 import React, { useState } from "react";
 import { Product } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
