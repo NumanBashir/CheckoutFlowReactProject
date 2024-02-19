@@ -21,7 +21,6 @@
 
 .trash-image {
   width: 30px;
-  height: 30px;
   background-color: white; /* Hvid baggrundsfarve */
   border-radius: 50%; /* Gør det rundt */
 }
@@ -30,4 +29,3 @@
 .my-row td {
   padding: 30px; /* Tilføjet 30px padding til overskrifts- og data-celler for at skabe space*/
 }
-
