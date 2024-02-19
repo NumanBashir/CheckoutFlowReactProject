@@ -11,11 +11,6 @@ interface ProductTableProps {
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const subtotal = products.reduce((acc, product) => acc + product.price, 0);
 
-  const total = products.reduce((acc, product) => {
-    const productTotal = product.price * (product.quantity || 0);
-    return acc + productTotal;
-  }, 0);
-
   function handleButtonClick(): void {
     console.log("Button clicked");
   }
