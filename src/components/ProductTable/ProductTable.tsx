@@ -1,4 +1,5 @@
 import { Product } from "../../interfaces/interfaces";
+import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
 import "./ProductTable.css";
 
@@ -8,6 +9,10 @@ interface ProductTableProps {
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const subtotal = products.reduce((acc, product) => acc + product.price, 0);
+
+  function handleButtonClick(): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <>
@@ -34,6 +39,11 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
           </tbody>
         </table>
       </div>
+      <Button
+        text="Gå til betaling"
+        onClick={handleButtonClick}
+        className="button"
+      />
     </>
   );
 };
