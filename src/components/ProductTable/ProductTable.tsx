@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Product } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
@@ -19,12 +19,15 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
     setInitialProducts(products);
   }, [products]);
 
-  const handleTotalChange = (productId: string, newTotal: number) => {
-    setTotals((prevState) => ({
-      ...prevState,
-      [productId]: newTotal,
-    }));
-  };
+  const handleTotalChange = useCallback(
+    (productId: string, newTotal: number) => {
+      setTotals((prevState) => ({
+        ...prevState,
+        [productId]: newTotal,
+      }));
+    },
+    []
+  );
 
   const handleDeleteRow = (productId: string) => {
     const updatedProducts = displayedProducts.filter(
