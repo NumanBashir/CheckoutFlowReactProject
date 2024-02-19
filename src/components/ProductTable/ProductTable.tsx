@@ -69,10 +69,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
       <div className="proceed-container">
         <p>
           <strong>Subtotal:</strong>{" "}
-          {Object.values(totals)
-            .reduce((acc, total) => acc + total, 0)
-            .toFixed(2)}{" "}
-          DKK{" "}
+          {Object.values(totals).reduce((acc, total) => acc + total, 0)} DKK{" "}
         </p>
         <Button
           text="Gå til betaling"
