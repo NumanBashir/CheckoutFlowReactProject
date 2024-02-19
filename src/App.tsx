@@ -3,8 +3,6 @@ import "./App.css";
 import ProductTable from "./components/ProductTable/ProductTable";
 import vitaminerData from "./data/vitaminer.json";
 import { Product } from "./interfaces/interfaces";
-import Button from "./components/Button/Button.tsx";
-import "./components/Button/Button.css";
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
