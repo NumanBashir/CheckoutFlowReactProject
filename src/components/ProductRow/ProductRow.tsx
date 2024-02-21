@@ -55,11 +55,7 @@ const ProductRow: React.FC<ProductRowProps> = ({
         </td>
         <td>
           <button className="delete-product" onClick={handleDeleteRow}>
-            <img
-              src="src/assets/trash-bin.png"
-              className="trash-image"
-              alt="Delete"
-            />
+            <img src={trashImage} className="trash-image" alt="Delete" />
           </button>
         </td>
       </tr>

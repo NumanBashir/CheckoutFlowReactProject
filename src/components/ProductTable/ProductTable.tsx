@@ -11,7 +11,7 @@ interface ProductTableProps {
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
-  const [initialProducts, setInitialProducts] = useState<Product[]>(products);
+  const [, setInitialProducts] = useState<Product[]>(products);
   const [totals, setTotals] = useState<{ [key: string]: number }>({});
 
   useEffect(() => {
