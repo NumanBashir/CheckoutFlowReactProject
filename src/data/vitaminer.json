@@ -17,7 +17,7 @@
     "rebateQuantity": 2,
     "rebatePercent": 25,
     "upsellProductId": "vitamin-c-depot-500-250",
-    "image": "src/assets/trash-bin.png"
+    "image": "/assets/fiskeolie.png"
   },
   {
     "id": "vitamin-c-depot-500-250",
@@ -27,7 +27,7 @@
     "rebateQuantity": 3,
     "rebatePercent": 10,
     "upsellProductId": null,
-    "image": "src/assets/fiskeolie.png"
+    "image": "/assets/fiskeolie.png"
   },
   {
     "id": "fish-oil-1000-120",
@@ -37,7 +37,7 @@
     "rebateQuantity": 5,
     "rebatePercent": 10,
     "upsellProductId": null,
-    "image": "src/assets/fiskeolie.png"
+    "image": "/assets/fiskeolie.png"
   },
   {
     "id": "coffee-grinder",
