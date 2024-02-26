@@ -11,12 +11,10 @@ interface ProductTableProps {
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
-  const [, setInitialProducts] = useState<Product[]>(products);
   const [totals, setTotals] = useState<{ [key: string]: number }>({});
 
   useEffect(() => {
     setDisplayedProducts(products);
-    setInitialProducts(products);
   }, [products]);
 
   const handleTotalChange = useCallback(
@@ -41,6 +39,11 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
       return updatedTotals;
     });
   };
+
+  const subtotal = Object.values(totals).reduce((acc, total) => acc + total, 0);
+
+  const discount = subtotal > 300 ? subtotal * 0.1 : 0;
+  const newSubtotal = subtotal - discount;
 
   return (
     <>
@@ -70,9 +73,20 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
       </div>
       <div className="proceed-container">
         <p>
-          <strong>Subtotal:</strong>{" "}
-          {Object.values(totals).reduce((acc, total) => acc + total, 0)} DKK{" "}
+          <strong>Subtotal:</strong> {subtotal.toFixed(2)} DKK
         </p>
+        {discount > 0 && (
+          <>
+            <p>
+              <strong>Rabat:</strong> -{discount.toFixed(2)} DKK (10% for ordrer
+              over 300 DKK)
+            </p>
+            <p>
+              <strong>Subtotal efter rabat:</strong> {newSubtotal.toFixed(2)}{" "}
+              DKK
+            </p>
+          </>
+        )}
         <Button
           text="Gå til betaling"
           onClick={() => console.log("Button clicked")}
