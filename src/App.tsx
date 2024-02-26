@@ -32,3 +32,4 @@ export default App;
 // TODO: Testing
 // TODO: Move vitaminer products to basket.json
 // TODO: Mobile friendliness?
+// TODO: Tell the user they received rebate
