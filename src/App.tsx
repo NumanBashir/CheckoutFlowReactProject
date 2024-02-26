@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import ProductTable from "./components/ProductTable/ProductTable";
-import vitaminerData from "./data/vitaminer.json";
+import vitaminerData from "./data/basket.json";
 import { Product } from "./interfaces/interfaces";
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const displayedProducts = products.slice(0, 4); // Show only first 4 products
 
   useEffect(() => {
     setProducts(vitaminerData as unknown as Product[]);
@@ -17,7 +16,7 @@ const App: React.FC = () => {
       <div className="container">
         <h1 className="title-cart">Din Indkøbskurv</h1>
         <div className="content">
-          <ProductTable products={displayedProducts} />
+          <ProductTable products={products} />
         </div>
       </div>
     </>
