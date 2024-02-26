@@ -30,5 +30,7 @@ export default App;
 // TODO: Fix button img styling
 // TODO: Move products cart table into CartPage
 // TODO: When we use router or nav place inside of App.tsx
-// TODO: Create a currency/price formatter in utilities
+// TODO: Create a currency/price formatter in utilities --> Create test for this
 // TODO: Calculate total price in terms of quantities
+// TODO: Testing
+// TODO: Move vitaminer products to basket.json
