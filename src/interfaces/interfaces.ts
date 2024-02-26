@@ -4,4 +4,7 @@ export interface Product {
   price: number;
   quantity: number;
   image: string;
+  rebateQuantity: number;
+  rebatePercent: number;
+  upsellProductId: string;
 }
