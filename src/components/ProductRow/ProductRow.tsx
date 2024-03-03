@@ -31,7 +31,9 @@ const ProductRow: React.FC<ProductRowProps> = ({
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value, 10);
-    setQuantity(newQuantity);
+    if (newQuantity >= 1) {
+      setQuantity(newQuantity);
+    }
   };
 
   const handleDeleteRow = () => {
