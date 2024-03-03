@@ -7,8 +7,7 @@
     "rebateQuantity": 3,
     "rebatePercent": 10,
     "upsellProductId": null,
-    "image": "/assets/d-vitamin.png",
-    "isGift": false
+    "image": "/assets/d-vitamin.png"
   },
   {
     "id": "vitamin-c-500-250",
@@ -18,8 +17,7 @@
     "rebateQuantity": 2,
     "rebatePercent": 25,
     "upsellProductId": "vitamin-c-depot-500-250",
-    "image": "/assets/c-vitamin.png",
-    "isGift": false
+    "image": "/assets/c-vitamin.png"
   },
   {
     "id": "vitamin-c-depot-500-250",
@@ -29,8 +27,7 @@
     "rebateQuantity": 3,
     "rebatePercent": 10,
     "upsellProductId": null,
-    "image": "/assets/c-vitamin depot.png",
-    "isGift": false
+    "image": "/assets/c-vitamin depot.png"
   },
   {
     "id": "fish-oil-1000-120",
@@ -40,7 +37,6 @@
     "rebateQuantity": 5,
     "rebatePercent": 10,
     "upsellProductId": null,
-    "image": "/assets/fiskeolie2.png",
-    "isGift": false
+    "image": "/assets/fiskeolie2.png"
   }
 ]

@@ -63,9 +63,6 @@ const ProductRow: React.FC<ProductRowProps> = ({
         </td>
         <td>{total} DKK</td>
         <td>
-          <input type="checkbox" className="gift-toggle" />
-        </td>
-        <td>
           <button className="delete-product" onClick={handleDeleteRow}>
             <img src={trashImage} className="trash-image" alt="Delete" />
           </button>
