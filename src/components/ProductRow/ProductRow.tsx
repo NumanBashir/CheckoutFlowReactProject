@@ -18,14 +18,22 @@ const ProductRow: React.FC<ProductRowProps> = ({
   const [total, setTotal] = useState(product.price);
 
   useEffect(() => {
-    const newTotal = product.price * quantity;
+    var newTotal;
+    if (quantity >= product.rebateQuantity) {
+      newTotal = quantity * product.price * (1 - product.rebatePercent / 100);
+    } else {
+      newTotal = product.price * quantity;
+    }
+
     setTotal(newTotal);
     onTotalChange(product.id, newTotal);
   }, [quantity, product, onTotalChange]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = parseInt(event.target.value);
-    setQuantity(newQuantity);
+    const newQuantity = parseInt(event.target.value, 10);
+    if (newQuantity >= 1) {
+      setQuantity(newQuantity);
+    }
   };
 
   const handleDeleteRow = () => {
@@ -36,7 +44,11 @@ const ProductRow: React.FC<ProductRowProps> = ({
     <>
       <tr className="my-row">
         <div className="image-name">
-          <img className="product-image" src={product.image} />
+          <img
+            className="product-image"
+            src={product.image}
+            alt={product.name}
+          />
           <td>{product.name}</td>
         </div>
         <td>{product.price} DKK</td>
@@ -50,9 +62,6 @@ const ProductRow: React.FC<ProductRowProps> = ({
           />
         </td>
         <td>{total} DKK</td>
-        <td>
-          <input type="checkbox" className="gift-toggle" />
-        </td>
         <td>
           <button className="delete-product" onClick={handleDeleteRow}>
             <img src={trashImage} className="trash-image" alt="Delete" />

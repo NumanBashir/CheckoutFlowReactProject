@@ -55,7 +55,6 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
               <th>Pris</th>
               <th>Antal</th>
               <th>I Alt</th>
-              <th>Gave?</th>
               <th></th>
             </tr>
           </thead>
