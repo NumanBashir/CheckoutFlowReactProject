@@ -45,6 +45,15 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const discount = subtotal > 300 ? subtotal * 0.1 : 0;
   const newSubtotal = subtotal - discount;
 
+  //Tilføjelse af tom kurv meddelelse
+  if (displayedProducts.length === 0) {
+    return (
+      <div className="empty-cart-message">
+        <p>Kurven er tom</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="table-container">
