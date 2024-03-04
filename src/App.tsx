@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import ProductTable from "./components/ProductTable/ProductTable";
+import SubmitForm from "./components/SubmitForm/SubmitForm";
 import vitaminerData from "./data/basket.json";
 import { Product } from "./interfaces/interfaces";
 
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <ProductTable products={products} />
         </div>
       </div>
+      <SubmitForm />
     </>
   );
 };

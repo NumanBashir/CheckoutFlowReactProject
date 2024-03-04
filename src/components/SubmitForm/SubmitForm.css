@@ -1,0 +1,63 @@
+#telefon::-webkit-outer-spin-button,
+#telefon::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.submit-form {
+  display: grid;
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select {
+  width: 90%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.input-submit {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.input-submit:hover {
+  background-color: #0056b3;
+}
