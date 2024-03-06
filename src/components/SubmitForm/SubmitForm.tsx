@@ -20,7 +20,12 @@ const SubmitForm = () => {
   const [city2, setCity2] = useState("");
   const [zipCodes, setZipCodes] = useState<ZipCodes[]>([]);
   const [cities, setCities] = useState<Cities[]>([]);
-  // TODO: Bug wiff duplicate zipCode and city, change to zipCode1 and zipCode2 etc.
+  const [isAddress2Shown, setisAddress2Shown] = useState(true);
+  // TODO: Be able to either find zipcode from city or city from zipcode
+
+  const checkboxHandler = () => {
+    setisAddress2Shown(!isAddress2Shown);
+  };
 
   // Fetch API and set zipCodes to data
   useEffect(() => {
@@ -52,7 +57,7 @@ const SubmitForm = () => {
     if (matchingPostalCode) {
       setCity1(matchingPostalCode.navn);
     } else {
-      setCity1("");
+      setCity1("Indtast gyldigt postnr");
     }
   }, [zipCode1, zipCodes]);
 
@@ -62,7 +67,7 @@ const SubmitForm = () => {
     if (matchingCity) {
       setZipCode2(matchingCity.nr);
     } else {
-      setZipCode2("");
+      setZipCode2("Indtast gyldig kommune/by");
     }
   }, [city2, cities]);
 
@@ -144,37 +149,61 @@ const SubmitForm = () => {
             className="form-input"
             readOnly
           />
-          <label htmlFor="adresse2" className="form-label">
-            Adresse 2:
+          <label htmlFor="otherAddress" className="form-label">
+            Skal produkterne sendes til en anden adresse?
           </label>
           <input
-            type="text"
-            id="adresse2"
-            name="adresse2"
-            className="form-input"
+            type="checkbox"
+            checked={isAddress2Shown}
+            onChange={checkboxHandler}
           />
-          <label htmlFor="postnummer2" className="form-label">
-            Postnummer:
-          </label>
-          <input
-            type="text"
-            id="postnummer2"
-            name="postnummer2"
-            className="form-input"
-            value={zipCode2}
-            readOnly
-          />
-          <label htmlFor="by2" className="form-label">
-            By:
-          </label>
-          <input
-            type="text"
-            id="by2"
-            name="by2"
-            value={city2}
-            onChange={(e) => setCity2(e.target.value)}
-            className="form-input"
-          />
+          <span>
+            {isAddress2Shown
+              ? "Skriv adresse 2"
+              : "Markér for at udfylde adresse 2"}
+          </span>
+          {isAddress2Shown && (
+            <div>
+              <div>
+                <label htmlFor="adresse2" className="form-label">
+                  Adresse 2:
+                </label>
+                <input
+                  type="text"
+                  id="adresse2"
+                  name="adresse2"
+                  className="form-input"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="postnummer2" className="form-label">
+                  Postnummer:
+                </label>
+                <input
+                  type="text"
+                  id="postnummer2"
+                  name="postnummer2"
+                  className="form-input"
+                  value={zipCode2}
+                  readOnly
+                />
+              </div>
+              <div>
+                <label htmlFor="by2" className="form-label">
+                  By:
+                </label>
+                <input
+                  type="text"
+                  id="by2"
+                  name="by2"
+                  value={city2}
+                  onChange={(e) => setCity2(e.target.value)}
+                  className="form-input"
+                />
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </>
