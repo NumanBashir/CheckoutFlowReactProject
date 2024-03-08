@@ -1,12 +1,17 @@
-import express, { response } from "express";
-import mongoose, { mongo } from "mongoose";
+import express from "express";
+import mongoose from "mongoose";
 import { mongoDBURL } from "./config.js";
+import orderRoutes from "./routes/orderRoutes.js"; 
 
 const app = express();
 
+app.use(express.json());  
+
 app.get("/", (req, res) => {
-  return res.status(234).send("Hej fra server");
+  return res.send("Hej fra server");
 });
+
+app.use("/orders", orderRoutes);  
 
 mongoose
   .connect(mongoDBURL)
@@ -17,5 +22,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error(error);
   });
