@@ -24,7 +24,7 @@ const SubmitForm = () => {
   const [cities, setCities] = useState<Cities[]>([]);
 
   const [isAddress2Shown, setisAddress2Shown] = useState(true);
-  // TODO: Be able to either find zipcode from city or city from zipcode
+  // TODO: Only use Postnummer1 and 2 to find City
 
   const checkboxHandler = () => {
     setisAddress2Shown(!isAddress2Shown);
