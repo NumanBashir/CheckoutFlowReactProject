@@ -30,6 +30,25 @@ const SubmitForm = () => {
     setisAddress2Shown(!isAddress2Shown);
   };
 
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [cvrNumber, setCvrNumber] = useState("");
+
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const onlyNums = value.replace(/\D/g, "");
+    if (onlyNums.length <= 8) {
+      setPhoneNumber(onlyNums);
+    }
+  };
+
+  const handleCVRNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const onlyNums = value.replace(/\D/g, "");
+    if (onlyNums.length <= 8) {
+      setCvrNumber(onlyNums);
+    }
+  };
+
   // Fetch API and set zipCodes to data
   useEffect(() => {
     fetch("https://api.dataforsyningen.dk/postnumre")
@@ -109,10 +128,11 @@ const SubmitForm = () => {
             Telefon:
           </label>
           <input
-            type="number"
+            type="text"
             id="telefon"
             name="telefon"
-            maxLength={8}
+            value={phoneNumber}
+            onChange={handlePhoneNumberChange}
             required
             className="form-input"
           />
@@ -138,7 +158,15 @@ const SubmitForm = () => {
           <label htmlFor="CVR" className="form-label">
             CVR:
           </label>
-          <input type="number" id="CVR" name="CVR" className="form-input" />
+          <input
+            type="text"
+            id="CVR"
+            name="CVR"
+            value={cvrNumber}
+            onChange={handleCVRNumberChange}
+            className="form-input"
+          />
+
           <label htmlFor="adresse1" className="form-label">
             Adresse 1:
           </label>
