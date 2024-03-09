@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SubmitForm.css";
+import Button from "../Button/Button"; // Correct path for Button component
 
 // Fix type error from API for ZipCodes
 interface ZipCodes {
@@ -47,6 +48,10 @@ const SubmitForm = () => {
     if (onlyNums.length <= 8) {
       setCvrNumber(onlyNums);
     }
+  };
+
+  const handleGoToPayment = () => {
+    console.log("Proceed to payment");
   };
 
   // Fetch API and set zipCodes to data
@@ -255,6 +260,11 @@ const SubmitForm = () => {
               </div>
             </div>
           )}
+          <Button
+            text="Betal nu"
+            onClick={handleGoToPayment}
+            className="proceed-to-payment-button"
+          />
         </form>
       </div>
     </>

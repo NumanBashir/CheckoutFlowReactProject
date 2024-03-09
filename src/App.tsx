@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import ProductTable from "./components/ProductTable/ProductTable";
 import SubmitForm from "./components/SubmitForm/SubmitForm";
@@ -18,9 +18,9 @@ const App: React.FC = () => {
         <h1 className="title-cart">Din Indkøbskurv</h1>
         <div className="content">
           <ProductTable products={products} />
+          <SubmitForm />
         </div>
       </div>
-      <SubmitForm />
     </>
   );
 };
