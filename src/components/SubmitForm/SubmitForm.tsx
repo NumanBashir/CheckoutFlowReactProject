@@ -16,10 +16,13 @@ interface Cities {
 const SubmitForm = () => {
   const [zipCode1, setZipCode1] = useState("");
   const [city1, setCity1] = useState("");
+
   const [zipCode2, setZipCode2] = useState("");
   const [city2, setCity2] = useState("");
+
   const [zipCodes, setZipCodes] = useState<ZipCodes[]>([]);
   const [cities, setCities] = useState<Cities[]>([]);
+
   const [isAddress2Shown, setisAddress2Shown] = useState(true);
   // TODO: Be able to either find zipcode from city or city from zipcode
 
@@ -67,7 +70,7 @@ const SubmitForm = () => {
     if (matchingCity) {
       setZipCode2(matchingCity.nr);
     } else {
-      setZipCode2("Indtast gyldig kommune/by");
+      setZipCode2("Indtast gyldig by");
     }
   }, [city2, cities]);
 
@@ -85,11 +88,23 @@ const SubmitForm = () => {
           <label htmlFor="fnavn" className="form-label">
             Fornavn:
           </label>
-          <input type="text" id="fnavn" name="fnavn" className="form-input" />
+          <input
+            type="text"
+            id="fnavn"
+            name="fnavn"
+            className="form-input"
+            required
+          />
           <label htmlFor="enavn" className="form-label">
             Efternavn:
           </label>
-          <input type="text" id="enavn" name="enavn" className="form-input" />
+          <input
+            type="text"
+            id="enavn"
+            name="enavn"
+            className="form-input"
+            required
+          />
           <label htmlFor="telefon" className="form-label">
             Telefon:
           </label>
@@ -104,7 +119,13 @@ const SubmitForm = () => {
           <label htmlFor="mail" className="form-label">
             Mail:
           </label>
-          <input type="email" id="mail" name="mail" className="form-input" />
+          <input
+            type="email"
+            id="mail"
+            name="mail"
+            className="form-input"
+            required
+          />
           <label htmlFor="firmanavn" className="form-label">
             Firma (valgfri):
           </label>
@@ -126,17 +147,19 @@ const SubmitForm = () => {
             id="adresse1"
             name="adresse1"
             className="form-input"
+            required
           />
           <label htmlFor="postnummer1" className="form-label">
             Postnummer:
           </label>
           <input
-            type="text"
+            type="number"
             id="postnummer1"
             name="postnummer1"
             value={zipCode1}
             onChange={(e) => setZipCode1(e.target.value)}
             className="form-input"
+            required
           />
           <label htmlFor="by1" className="form-label">
             By:
@@ -152,16 +175,15 @@ const SubmitForm = () => {
           <label htmlFor="otherAddress" className="form-label">
             Skal produkterne sendes til en anden adresse?
           </label>
-          <input
-            type="checkbox"
-            checked={isAddress2Shown}
-            onChange={checkboxHandler}
-          />
-          <span>
-            {isAddress2Shown
-              ? "Skriv adresse 2"
-              : "Markér for at udfylde adresse 2"}
-          </span>
+          <div>
+            <input
+              type="checkbox"
+              checked={isAddress2Shown}
+              onChange={checkboxHandler}
+            />
+            <span>{isAddress2Shown ? "Skriv adresse 2" : "Ja"}</span>
+          </div>
+
           {isAddress2Shown && (
             <div>
               <div>
@@ -181,7 +203,7 @@ const SubmitForm = () => {
                   Postnummer:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="postnummer2"
                   name="postnummer2"
                   className="form-input"
@@ -189,6 +211,7 @@ const SubmitForm = () => {
                   readOnly
                 />
               </div>
+
               <div>
                 <label htmlFor="by2" className="form-label">
                   By:
@@ -197,9 +220,9 @@ const SubmitForm = () => {
                   type="text"
                   id="by2"
                   name="by2"
+                  className="form-input"
                   value={city2}
                   onChange={(e) => setCity2(e.target.value)}
-                  className="form-input"
                 />
               </div>
             </div>

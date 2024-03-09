@@ -1,5 +1,9 @@
 #telefon::-webkit-outer-spin-button,
-#telefon::-webkit-inner-spin-button {
+#telefon::-webkit-inner-spin-button,
+#postnummer2::-webkit-outer-spin-button,
+#postnummer2::-webkit-inner-spin-button,
+#postnummer1::-webkit-outer-spin-button,
+#postnummer1::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
