@@ -5,17 +5,9 @@ import "./ProductTable.css";
 
 interface ProductTableProps {
   products: Product[];
-  basket: { [productId: string]: number };
-  updateQuantity: (productId: string, quantity: number) => void;
-  onDeleteRow: (productId: string) => void;
 }
 
-const ProductTable: React.FC<ProductTableProps> = ({
-  products,
-  basket,
-  updateQuantity,
-  onDeleteRow,
-}) => {
+const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
   const [totals, setTotals] = useState<{ [key: string]: number }>({});
@@ -70,10 +62,8 @@ const ProductTable: React.FC<ProductTableProps> = ({
               <ProductRow
                 key={product.id}
                 product={product}
-                quantity={basket[product.id] || 1}
-                onUpdateQuantity={updateQuantity}
                 onTotalChange={handleTotalChange}
-                onDeleteRow={onDeleteRow}
+                onDeleteRow={handleDeleteRow}
               />
             ))}
           </tbody>

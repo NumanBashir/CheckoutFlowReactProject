@@ -34,7 +34,6 @@ const SubmitForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [cvrNumber, setCvrNumber] = useState("");
 
-  // AI Generated to handle 8-digit (MaxLength property did not work)
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const onlyNums = value.replace(/\D/g, "");
@@ -43,7 +42,6 @@ const SubmitForm = () => {
     }
   };
 
-  // AI Generated to handle 8-digit (MaxLength property did not work)
   const handleCVRNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const onlyNums = value.replace(/\D/g, "");
