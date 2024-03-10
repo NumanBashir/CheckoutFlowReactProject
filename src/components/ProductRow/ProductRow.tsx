@@ -5,16 +5,19 @@ import trashImage from "/src/assets/trash-bin.png";
 
 interface ProductRowProps {
   product: Product;
+  quantity: number;
   onTotalChange: (productId: string, newTotal: number) => void;
+  onUpdateQuantity: (productId: string, quantity: number) => void;
   onDeleteRow: (productId: string) => void;
 }
 
 const ProductRow: React.FC<ProductRowProps> = ({
   product,
+  quantity,
   onTotalChange,
+  onUpdateQuantity,
   onDeleteRow,
 }) => {
-  const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(product.price);
 
   useEffect(() => {
@@ -32,7 +35,7 @@ const ProductRow: React.FC<ProductRowProps> = ({
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value, 10);
     if (newQuantity >= 1) {
-      setQuantity(newQuantity);
+      onUpdateQuantity(product.id, newQuantity);
     }
   };
 
