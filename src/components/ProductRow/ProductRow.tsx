@@ -29,11 +29,11 @@ const ProductRow: React.FC<ProductRowProps> = ({
     );
   useEffect(() => {
     var newTotal;
-    const isEligibleForRebate = quantity >= product.rebateQuantity;
-    const quantityToRebate = product.rebateQuantity - quantity;
+    const isEligibleForRebate = quantity >= product.rebateQuantity!;
+    const quantityToRebate = product.rebateQuantity! - quantity;
 
     if (isEligibleForRebate) {
-      newTotal = quantity * product.price * (1 - product.rebatePercent / 100);
+      newTotal = quantity * product.price * (1 - product.rebatePercent! / 100);
     } else {
       newTotal = product.price * quantity;
     }
@@ -77,7 +77,7 @@ const ProductRow: React.FC<ProductRowProps> = ({
           />
           {nearRebateThreshold && (
             <div className="rebate-nudge">
-              Køb {product.rebateQuantity - quantity} mere for at få{" "}
+              Køb {product.rebateQuantity! - quantity} mere for at få{" "}
               {product.rebatePercent}% rabat!
             </div>
           )}

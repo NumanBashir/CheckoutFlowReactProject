@@ -3,10 +3,10 @@ export interface Product {
   name: string;
   price: number;
   quantity: number;
-  image: string;
-  rebateQuantity: number;
-  rebatePercent: number;
-  upsellProductId: string;
+  image?: string;
+  rebateQuantity?: number;
+  rebatePercent?: number;
+  upsellProductId?: string;
 }
 
 export interface BasketItem {
