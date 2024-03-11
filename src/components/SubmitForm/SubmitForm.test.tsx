@@ -27,3 +27,16 @@ describe("SubmitForm", () => {
     expect(firstNameInput.value).toBe("Henrik");
   });
 });
+
+describe("SubmitForm", () => {
+  it("updates last name input on change", () => {
+    render(<SubmitForm />);
+
+    const lastNameInput = screen.getByLabelText(
+      /Efternavn:/i
+    ) as HTMLInputElement;
+    fireEvent.change(lastNameInput, { target: { value: "Hansen" } });
+
+    expect(lastNameInput.value).toBe("Hansen");
+  });
+});
