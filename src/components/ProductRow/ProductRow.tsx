@@ -83,7 +83,7 @@ const ProductRow: React.FC<ProductRowProps> = ({
             </div>
           </div>
         </td>
-        <td>{total} DKK</td>
+        <td>{(Math.round(total * 100) / 100).toFixed(2)} DKK</td>
         <td>
           <button className="delete-product" onClick={handleDeleteRow}>
             <img src={trashImage} className="trash-image" alt="Delete" />
