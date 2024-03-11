@@ -8,12 +8,6 @@ interface ZipCodes {
   navn: string;
 }
 
-// Fix type error from API for Cities
-interface Cities {
-  nr: string;
-  navn: string;
-}
-
 const SubmitForm = () => {
   const [zipCode1, setZipCode1] = useState("");
   const [city1, setCity1] = useState("");
@@ -22,10 +16,8 @@ const SubmitForm = () => {
   const [city2, setCity2] = useState("");
 
   const [zipCodes, setZipCodes] = useState<ZipCodes[]>([]);
-  const [cities, setCities] = useState<Cities[]>([]);
 
   const [isAddress2Shown, setisAddress2Shown] = useState(false);
-  // TODO: Only use Postnummer1 and 2 to find City
 
   const checkboxHandler = () => {
     setisAddress2Shown(!isAddress2Shown);
@@ -66,37 +58,24 @@ const SubmitForm = () => {
       });
   }, []);
 
-  // Fetch API and set cities to data
-  useEffect(() => {
-    fetch("https://api.dataforsyningen.dk/postnumre")
-      .then((response) => response.json())
-      .then((data) => {
-        setCities(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching cities data:", error);
-      });
-  }, []);
-
   // Logic to get matching city name from zipcode
   useEffect(() => {
     const matchingPostalCode = zipCodes.find((code) => code.nr === zipCode1);
     if (matchingPostalCode) {
       setCity1(matchingPostalCode.navn);
     } else {
-      setCity1("Indtast gyldigt postnr");
+      setCity1("Indtast Gyldigt Postnummer");
     }
   }, [zipCode1, zipCodes]);
 
-  // Logic to get matching zipcode from city name
   useEffect(() => {
-    const matchingCity = cities.find((code) => code.navn === city2);
-    if (matchingCity) {
-      setZipCode2(matchingCity.nr);
+    const matchingPostalCode = zipCodes.find((code) => code.nr === zipCode2);
+    if (matchingPostalCode) {
+      setCity2(matchingPostalCode.navn);
     } else {
-      setZipCode2("Indtast gyldig by");
+      setCity2("Indtast Gyldigt Postnummer");
     }
-  }, [city2, cities]);
+  }, [zipCode2, zipCodes]);
 
   return (
     <>
@@ -241,9 +220,9 @@ const SubmitForm = () => {
                   type="number"
                   id="postnummer2"
                   name="postnummer2"
-                  className="form-input"
                   value={zipCode2}
-                  readOnly
+                  className="form-input"
+                  onChange={(e) => setZipCode2(e.target.value)}
                 />
               </div>
 
@@ -257,7 +236,6 @@ const SubmitForm = () => {
                   name="by2"
                   className="form-input"
                   value={city2}
-                  onChange={(e) => setCity2(e.target.value)}
                 />
               </div>
             </div>
