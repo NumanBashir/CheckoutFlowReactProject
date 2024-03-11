@@ -22,8 +22,7 @@ const ProductRow: React.FC<ProductRowProps> = ({
   const upsellMessage =
     product.upsellProductId === "vitamin-c-depot-500-250" ? (
       <strong>
-        Overvej at købe {product.upsellProductId} for kun 25 DKK mere og få en
-        bedre effekt.
+        Overvej at købe {product.upsellProductId} for at få mere for pengene
       </strong>
     ) : (
       ""
