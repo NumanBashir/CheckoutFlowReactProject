@@ -1,0 +1,72 @@
+#telefon::-webkit-outer-spin-button,
+#telefon::-webkit-inner-spin-button,
+#postnummer2::-webkit-outer-spin-button,
+#postnummer2::-webkit-inner-spin-button,
+#postnummer1::-webkit-outer-spin-button,
+#postnummer1::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.submit-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.form-label {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select {
+  width: 90%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.input-submit {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: center;
+}
+
+.input-submit:hover {
+  background-color: #0056b3;
+}

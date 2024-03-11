@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Product } from "../../interfaces/interfaces";
-import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
 import "./ProductTable.css";
 
@@ -79,7 +78,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
           </tbody>
         </table>
       </div>
-      <div className="proceed-container">
+      <div className="subtotal-container">
         <p>
           <strong>Subtotal:</strong> {subtotal.toFixed(2)} DKK
         </p>
@@ -95,10 +94,6 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
             </p>
           </>
         )}
-        <Button
-          text="Gå til betaling"
-          onClick={() => console.log("Button clicked")}
-        />
       </div>
     </>
   );
