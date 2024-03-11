@@ -16,10 +16,23 @@ const ProductRow: React.FC<ProductRowProps> = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(product.price);
+  const [nearRebateThreshold, setNearRebateThreshold] = useState(false);
 
+  // Antager at logik for at finde upsell produkt er på plads
+  const upsellMessage =
+    product.upsellProductId === "vitamin-c-depot-500-250" ? (
+      <strong>
+        Overvej at købe {product.upsellProductId} for at få mere for pengene
+      </strong>
+    ) : (
+      ""
+    );
   useEffect(() => {
     var newTotal;
-    if (quantity >= product.rebateQuantity) {
+    const isEligibleForRebate = quantity >= product.rebateQuantity;
+    const quantityToRebate = product.rebateQuantity - quantity;
+
+    if (isEligibleForRebate) {
       newTotal = quantity * product.price * (1 - product.rebatePercent / 100);
     } else {
       newTotal = product.price * quantity;
@@ -27,6 +40,8 @@ const ProductRow: React.FC<ProductRowProps> = ({
 
     setTotal(newTotal);
     onTotalChange(product.id, newTotal);
+
+    setNearRebateThreshold(quantityToRebate > 0 && quantityToRebate <= 4);
   }, [quantity, product, onTotalChange]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +75,14 @@ const ProductRow: React.FC<ProductRowProps> = ({
             value={quantity}
             onChange={handleQuantityChange}
           />
+          {nearRebateThreshold && (
+            <div className="rebate-nudge">
+              Køb {product.rebateQuantity - quantity} mere for at få{" "}
+              {product.rebatePercent}% rabat!
+            </div>
+          )}
+          {/* Tilføjelse af upsell besked */}
+          {upsellMessage && <div className="upsell-nudge">{upsellMessage}</div>}
         </td>
         <td>{total} DKK</td>
         <td>
