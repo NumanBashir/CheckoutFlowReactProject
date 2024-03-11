@@ -24,7 +24,7 @@ const SubmitForm = () => {
   const [zipCodes, setZipCodes] = useState<ZipCodes[]>([]);
   const [cities, setCities] = useState<Cities[]>([]);
 
-  const [isAddress2Shown, setisAddress2Shown] = useState(true);
+  const [isAddress2Shown, setisAddress2Shown] = useState(false);
   // TODO: Only use Postnummer1 and 2 to find City
 
   const checkboxHandler = () => {
@@ -137,6 +137,8 @@ const SubmitForm = () => {
             id="telefon"
             name="telefon"
             value={phoneNumber}
+            minLength={8}
+            maxLength={8}
             onChange={handlePhoneNumberChange}
             required
             className="form-input"
