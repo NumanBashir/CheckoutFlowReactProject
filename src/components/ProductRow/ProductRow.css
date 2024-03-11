@@ -6,19 +6,26 @@
   width: 100px;
 }
 
-.image-name {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .my-row {
   border-bottom: 1px solid #ccc; /* Linje under hver række */
+}
+
+.quantity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .quantity-input {
   width: 50px;
   padding: 5px;
+  text-align: center;
+}
+
+.nudge-message {
+  max-width: 300px;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .delete-product {

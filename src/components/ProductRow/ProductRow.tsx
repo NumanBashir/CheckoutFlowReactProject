@@ -58,31 +58,30 @@ const ProductRow: React.FC<ProductRowProps> = ({
   return (
     <>
       <tr className="my-row">
-        <div className="image-name">
-          <img
-            className="product-image"
-            src={product.image}
-            alt={product.name}
-          />
-          <td>{product.name}</td>
-        </div>
+        <td>{product.name}</td>
         <td>{product.price} DKK</td>
         <td>
-          <input
-            type="number"
-            className="quantity-input"
-            min="1"
-            value={quantity}
-            onChange={handleQuantityChange}
-          />
-          {nearRebateThreshold && (
-            <div className="rebate-nudge">
-              Køb {product.rebateQuantity! - quantity} mere for at få{" "}
-              {product.rebatePercent}% rabat!
+          <div className="quantity-container">
+            <input
+              type="number"
+              className="quantity-input"
+              min="1"
+              value={quantity}
+              onChange={handleQuantityChange}
+            />
+            <div className="nudge-message">
+              {nearRebateThreshold && (
+                <div className="rebate-nudge">
+                  Køb {product.rebateQuantity! - quantity} mere for at få{" "}
+                  {product.rebatePercent}% rabat!
+                </div>
+              )}
+              {/* Tilføjelse af upsell besked */}
+              {upsellMessage && (
+                <div className="upsell-nudge">{upsellMessage}</div>
+              )}
             </div>
-          )}
-          {/* Tilføjelse af upsell besked */}
-          {upsellMessage && <div className="upsell-nudge">{upsellMessage}</div>}
+          </div>
         </td>
         <td>{total} DKK</td>
         <td>
