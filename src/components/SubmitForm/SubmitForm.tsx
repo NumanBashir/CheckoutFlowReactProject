@@ -42,8 +42,9 @@ const SubmitForm = () => {
     }
   };
 
-  const handleGoToPayment = () => {
+  const handleGoToPayment = (e: any) => {
     console.log("Proceed to payment");
+    e.preventDefault();
   };
 
   // Fetch API and set zipCodes to data
