@@ -8,3 +8,8 @@ export interface Product {
   rebatePercent: number;
   upsellProductId: string;
 }
+
+export interface BasketItem {
+  id: string;
+  quantity: number;
+}
