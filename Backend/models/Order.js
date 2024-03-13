@@ -78,3 +78,5 @@ const orderSchema = new mongoose.Schema({
 
   basket: [{ type: mongoose.Schema.Types.ObjectId, ref: "Basket" }],
 });
+
+export const Order = mongoose.model("Order", orderSchema);
