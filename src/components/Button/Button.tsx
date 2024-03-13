@@ -3,7 +3,7 @@ import "./Button.css";
 
 interface ButtonProps {
   text: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   disabled?: boolean;
 }

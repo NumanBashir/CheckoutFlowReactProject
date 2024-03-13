@@ -16,17 +16,32 @@ const ProductRow: React.FC<ProductRowProps> = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(product.price);
+  const [nearRebateThreshold, setNearRebateThreshold] = useState(false);
 
+  // Antager at logik for at finde upsell produkt er på plads
+  const upsellMessage =
+    product.upsellProductId === "vitamin-c-depot-500-250" ? (
+      <strong>
+        Overvej at købe {product.upsellProductId} for at få mere for pengene
+      </strong>
+    ) : (
+      ""
+    );
   useEffect(() => {
     var newTotal;
-    if (quantity >= product.rebateQuantity) {
-      newTotal = quantity * product.price * (1 - product.rebatePercent / 100);
+    const isEligibleForRebate = quantity >= product.rebateQuantity!;
+    const quantityToRebate = product.rebateQuantity! - quantity;
+
+    if (isEligibleForRebate) {
+      newTotal = quantity * product.price * (1 - product.rebatePercent! / 100);
     } else {
       newTotal = product.price * quantity;
     }
 
     setTotal(newTotal);
     onTotalChange(product.id, newTotal);
+
+    setNearRebateThreshold(quantityToRebate > 0 && quantityToRebate <= 4);
   }, [quantity, product, onTotalChange]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,25 +58,32 @@ const ProductRow: React.FC<ProductRowProps> = ({
   return (
     <>
       <tr className="my-row">
-        <div className="image-name">
-          <img
-            className="product-image"
-            src={product.image}
-            alt={product.name}
-          />
-          <td>{product.name}</td>
-        </div>
+        <td>{product.name}</td>
         <td>{product.price} DKK</td>
         <td>
-          <input
-            type="number"
-            className="quantity-input"
-            min="1"
-            value={quantity}
-            onChange={handleQuantityChange}
-          />
+          <div className="quantity-container">
+            <input
+              type="number"
+              className="quantity-input"
+              min="1"
+              value={quantity}
+              onChange={handleQuantityChange}
+            />
+            <div className="nudge-message">
+              {nearRebateThreshold && (
+                <div className="rebate-nudge">
+                  Køb {product.rebateQuantity! - quantity} mere for at få{" "}
+                  {product.rebatePercent}% rabat!
+                </div>
+              )}
+              {/* Tilføjelse af upsell besked */}
+              {upsellMessage && (
+                <div className="upsell-nudge">{upsellMessage}</div>
+              )}
+            </div>
+          </div>
         </td>
-        <td>{total} DKK</td>
+        <td>{(Math.round(total * 100) / 100).toFixed(2)} DKK</td>
         <td>
           <button className="delete-product" onClick={handleDeleteRow}>
             <img src={trashImage} className="trash-image" alt="Delete" />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Product } from "../../interfaces/interfaces";
-import Button from "../Button/Button";
 import ProductRow from "../ProductRow/ProductRow";
 import "./ProductTable.css";
 
@@ -45,6 +44,15 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const discount = subtotal > 300 ? subtotal * 0.1 : 0;
   const newSubtotal = subtotal - discount;
 
+  //Tilføjelse af tom kurv meddelelse
+  if (displayedProducts.length === 0) {
+    return (
+      <div className="empty-cart-message">
+        <p>Kurven er tom</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="table-container">
@@ -70,7 +78,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
           </tbody>
         </table>
       </div>
-      <div className="proceed-container">
+      <div className="subtotal-container">
         <p>
           <strong>Subtotal:</strong> {subtotal.toFixed(2)} DKK
         </p>
@@ -86,10 +94,6 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
             </p>
           </>
         )}
-        <Button
-          text="Gå til betaling"
-          onClick={() => console.log("Button clicked")}
-        />
       </div>
     </>
   );
