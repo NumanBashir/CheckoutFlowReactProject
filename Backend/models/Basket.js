@@ -9,7 +9,7 @@ const basketItemSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  subtotal: {
+  total: {
     type: Number,
     required: true,
   },
@@ -17,7 +17,7 @@ const basketItemSchema = new mongoose.Schema({
 
 const basketSchema = new mongoose.Schema({
   items: [basketItemSchema],
-  total: {
+  subtotal: {
     type: Number,
     required: true,
   },
