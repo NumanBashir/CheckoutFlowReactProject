@@ -94,7 +94,7 @@ const SubmitForm = () => {
             <option value="danmark">Danmark</option>
           </select>
           <label htmlFor="fnavn" className="form-label">
-            Fornavn:
+            Fornavn<span>*</span>
           </label>
           <input
             type="text"
@@ -104,7 +104,7 @@ const SubmitForm = () => {
             required
           />
           <label htmlFor="enavn" className="form-label">
-            Efternavn:
+            Efternavn<span>*</span>
           </label>
           <input
             type="text"
@@ -114,7 +114,7 @@ const SubmitForm = () => {
             required
           />
           <label htmlFor="telefon" className="form-label">
-            Telefon:
+            Telefon<span>*</span>
           </label>
           <input
             type="text"
@@ -128,7 +128,7 @@ const SubmitForm = () => {
             className="form-input"
           />
           <label htmlFor="mail" className="form-label">
-            Mail*:
+            Mail<span>*</span>
           </label>
           <input
             type="email"
@@ -159,7 +159,7 @@ const SubmitForm = () => {
           />
 
           <label htmlFor="adresse1" className="form-label">
-            Adresse 1*:
+            Adresse 1<span>*</span>
           </label>
           <input
             type="text"
@@ -169,7 +169,7 @@ const SubmitForm = () => {
             required
           />
           <label htmlFor="postnummer1" className="form-label">
-            Postnummer*:
+            Postnummer<span>*</span>
           </label>
           <input
             type="number"
@@ -250,6 +250,7 @@ const SubmitForm = () => {
             onClick={handleGoToPayment}
             className="proceed-to-payment-button"
           />
+          <p>Felter markeret med * er påkrævede.</p>
         </form>
       </div>
     </>

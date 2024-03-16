@@ -6,7 +6,7 @@ describe("SubmitForm", () => {
     render(<SubmitForm />);
 
     const phoneNumberInput = screen.getByLabelText(
-      /Telefon:/i
+      /Telefon/i
     ) as HTMLInputElement;
 
     fireEvent.change(phoneNumberInput, { target: { value: "12345678" } });
@@ -20,7 +20,7 @@ describe("SubmitForm", () => {
     render(<SubmitForm />);
 
     const firstNameInput = screen.getByLabelText(
-      /Fornavn:/i
+      /Fornavn/i
     ) as HTMLInputElement;
     fireEvent.change(firstNameInput, { target: { value: "Henrik" } });
 
@@ -33,7 +33,7 @@ describe("SubmitForm", () => {
     render(<SubmitForm />);
 
     const lastNameInput = screen.getByLabelText(
-      /Efternavn:/i
+      /Efternavn/i
     ) as HTMLInputElement;
     fireEvent.change(lastNameInput, { target: { value: "Hansen" } });
 
