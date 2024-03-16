@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ProductTable from "./ProductTable";
 
 describe("ProductTable component", () => {
@@ -22,5 +22,31 @@ describe("ProductTable component", () => {
 
     expect(productName1).toBeInTheDocument();
     expect(productName2).toBeInTheDocument();
+  });
+});
+
+describe("Subtotal calculations", () => {
+  it("applies a 10% rebate when subtotal is over 300", () => {
+    const products = [
+      { id: "1", name: "Product 1", price: 150, quantity: 1 },
+      { id: "2", name: "Product 2", price: 200, quantity: 1 },
+    ];
+
+    render(<ProductTable products={products} />);
+
+    const subtotalText = screen.getByText(/Subtotal:/i);
+
+    const discountText = screen.getByText(
+      /-\d+\.\d{2} DKK \(10% for ordrer over 300 DKK\)/i
+    );
+
+    const subtotalAfterDiscountText = screen.getByText(
+      /Subtotal efter rabat:/i
+    );
+
+    // Verify that the texts exist
+    expect(subtotalText).toBeInTheDocument();
+    expect(discountText).toBeInTheDocument();
+    expect(subtotalAfterDiscountText).toBeInTheDocument();
   });
 });
