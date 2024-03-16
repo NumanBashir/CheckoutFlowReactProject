@@ -9,11 +9,11 @@ interface ZipCodes {
 }
 
 const SubmitForm = () => {
-  const [zipCode1, setZipCode1] = useState("");
-  const [city1, setCity1] = useState("");
+  const [billingAddressZipCode, setbillingAddressZipCode] = useState("");
+  const [billingAddressCity, setbillingAddressCity] = useState("");
 
-  const [zipCode2, setZipCode2] = useState("");
-  const [city2, setCity2] = useState("");
+  const [deliveryAddressZipCode, deliveryAddressessZipCode] = useState("");
+  const [deliveryAddressCity, setdeliveryAddressCity] = useState("");
 
   const [zipCodes, setZipCodes] = useState<ZipCodes[]>([]);
 
@@ -61,22 +61,26 @@ const SubmitForm = () => {
 
   // Logic to get matching city name from zipcode
   useEffect(() => {
-    const matchingPostalCode = zipCodes.find((code) => code.nr === zipCode1);
+    const matchingPostalCode = zipCodes.find(
+      (code) => code.nr === billingAddressZipCode
+    );
     if (matchingPostalCode) {
-      setCity1(matchingPostalCode.navn);
+      setbillingAddressCity(matchingPostalCode.navn);
     } else {
-      setCity1("Indtast Gyldigt Postnummer");
+      setbillingAddressCity("Indtast Gyldigt Postnummer");
     }
-  }, [zipCode1, zipCodes]);
+  }, [billingAddressZipCode, zipCodes]);
 
   useEffect(() => {
-    const matchingPostalCode = zipCodes.find((code) => code.nr === zipCode2);
+    const matchingPostalCode = zipCodes.find(
+      (code) => code.nr === deliveryAddressZipCode
+    );
     if (matchingPostalCode) {
-      setCity2(matchingPostalCode.navn);
+      setdeliveryAddressCity(matchingPostalCode.navn);
     } else {
-      setCity2("Indtast Gyldigt Postnummer");
+      setdeliveryAddressCity("Indtast Gyldigt Postnummer");
     }
-  }, [zipCode2, zipCodes]);
+  }, [deliveryAddressZipCode, zipCodes]);
 
   return (
     <>
@@ -124,7 +128,7 @@ const SubmitForm = () => {
             className="form-input"
           />
           <label htmlFor="mail" className="form-label">
-            Mail:
+            Mail*:
           </label>
           <input
             type="email"
@@ -155,7 +159,7 @@ const SubmitForm = () => {
           />
 
           <label htmlFor="adresse1" className="form-label">
-            Adresse 1:
+            Adresse 1*:
           </label>
           <input
             type="text"
@@ -165,14 +169,14 @@ const SubmitForm = () => {
             required
           />
           <label htmlFor="postnummer1" className="form-label">
-            Postnummer:
+            Postnummer*:
           </label>
           <input
             type="number"
             id="postnummer1"
             name="postnummer1"
-            value={zipCode1}
-            onChange={(e) => setZipCode1(e.target.value)}
+            value={billingAddressZipCode}
+            onChange={(e) => setbillingAddressZipCode(e.target.value)}
             className="form-input"
             required
           />
@@ -183,7 +187,7 @@ const SubmitForm = () => {
             type="text"
             id="by1"
             name="by1"
-            value={city1}
+            value={billingAddressCity}
             className="form-input"
             readOnly
           />
@@ -221,9 +225,9 @@ const SubmitForm = () => {
                   type="number"
                   id="postnummer2"
                   name="postnummer2"
-                  value={zipCode2}
+                  value={deliveryAddressZipCode}
                   className="form-input"
-                  onChange={(e) => setZipCode2(e.target.value)}
+                  onChange={(e) => deliveryAddressessZipCode(e.target.value)}
                 />
               </div>
 
@@ -236,13 +240,13 @@ const SubmitForm = () => {
                   id="by2"
                   name="by2"
                   className="form-input"
-                  value={city2}
+                  value={deliveryAddressCity}
                 />
               </div>
             </div>
           )}
           <Button
-            text="Betal nu"
+            text="Gå til betaling"
             onClick={handleGoToPayment}
             className="proceed-to-payment-button"
           />
