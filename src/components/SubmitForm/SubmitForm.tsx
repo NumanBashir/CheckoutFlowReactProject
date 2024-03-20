@@ -42,7 +42,7 @@ const SubmitForm = () => {
     }
   };
 
-  const handleGoToPayment = (e: any) => {
+  const handleGoToPayment = () => {
     console.log("Proceed to payment");
     e.preventDefault();
   };
