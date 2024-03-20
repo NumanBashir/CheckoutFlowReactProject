@@ -1,3 +1,9 @@
+/* Nulstil margin og padding for body for at sikre, at indhold kan strække sig helt ud til kanterne */
+body {
+  margin: 0;
+  padding: 0;
+  
+}
 .title-cart {
   color: #faf8f8;
   text-align: center;
@@ -5,5 +11,7 @@
   padding: 10px;
   background-color: rgb(8, 52, 88);
   font-size: 40px; /* Gør teksten større */
-  margin-top: 35px; /* Rykker elementet nedad */
+  margin: 0px; /* ingen mellerum fra toppen */
+  width: 100%; /* Sørger for at titlen fylder hele bredden */
 }
+
