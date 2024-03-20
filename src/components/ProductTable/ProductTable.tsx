@@ -62,7 +62,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
               <th>Produkt</th>
               <th>Pris</th>
               <th>Antal</th>
-              <th>I Alt</th>
+              <th>Beløb</th>
               <th></th>
             </tr>
           </thead>

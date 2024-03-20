@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
     <>
       <div className="container">
-        <h1 className="title-cart">Din Indkøbskurv</h1>
+        <h1 className="title-cart">Indkøbskurv</h1>
         <h1>Køb for mere end 300 DKK og få 10% på hele din ordre!</h1>
         <div className="content">
           <ProductTable products={products} />

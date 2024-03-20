@@ -14,12 +14,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .quantity-input {
   width: 50px;
   padding: 5px;
   text-align: center;
+  
 }
 
 .nudge-message {
@@ -45,10 +47,12 @@
 .my-row th,
 .my-row td {
   padding: 30px; /* Tilføjet 30px padding til overskrifts- og data-celler for at skabe space*/
+  
 }
 
 .gift-toggle {
   width: 30px;
   height: 30px;
   accent-color: #eb5160;
+  
 }
