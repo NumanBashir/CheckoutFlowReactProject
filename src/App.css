@@ -6,7 +6,7 @@ body {
 }
 .title-cart {
   color: #faf8f8;
-  text-align: center;
+  text-align: left;
   border-bottom: 2px solid #ccc;
   padding: 10px;
   background-color: rgb(8, 52, 88);

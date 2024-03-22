@@ -10,7 +10,7 @@
 
 .form-container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 0 0 0 ;
   margin-top: 60px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,6 +40,10 @@ h1 {
   color: #666;
   font-weight: bold;
 }
+.form-label[for="otherAddress"] {
+  color: rgb(244, 121, 121);
+}
+
 
 .form-input,
 .form-select {

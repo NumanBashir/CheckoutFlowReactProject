@@ -242,7 +242,7 @@ const SubmitForm = () => {
             </div>
           )}
           <Button
-            text="Betal nu"
+            text="Gå til betaling"
             onClick={handleGoToPayment}
             className="proceed-to-payment-button"
           />
